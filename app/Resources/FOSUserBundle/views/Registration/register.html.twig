@@ -1,0 +1,26 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% block fos_user_content %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="save">
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block menu %}
+<div class="toolbar clearfix">
+    <div>
+        <a href="{{ path('fos_user_resetting_request') }}"  class="forgot-password-link">
+            <i class="ace-icon fa fa-arrow-left"></i>
+            I forgot my password
+        </a>
+    </div>
+
+    <div>
+        <a href="{{ path('fos_user_security_login') }}" class="user-signup-link">
+            I want to login
+            <i class="ace-icon fa fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+formation_training:
+    resource: "@FormationBundle/Resources/config/routing/training.yml"
+    prefix:   /training
+
+formation_instructor:
+    resource: "@FormationBundle/Resources/config/routing/instructor.yml"
+    prefix:   /instructor
+
+formation_certificate:
+    resource: "@FormationBundle/Resources/config/routing/certificate.yml"
+    prefix:   /certificate
+
+formation_client:
+    resource: "@FormationBundle/Resources/config/routing/client.yml"
+    prefix:   /client

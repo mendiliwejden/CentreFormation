@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trainings list</h1>
+    <form action="{{ path('training_index') }}">
+        <label for="q">search for training</label>
+        <input type="text" name="q" id="q">
+        <input type="submit" value="search">
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Price</th>
+                <th>Seats</th>
+                <th>Instructor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for training in trainings %}
+            <tr>
+                <td><a href="{{ path('training_show', { 'id': training.id }) }}">{{ training.id }}</a></td>
+                <td>{{ training.name }}</td>
+                <td>{{ training.duration }}</td>
+                <td>{{ training.startDate|date('Y-m-d') }}</td>
+                <td>{{ training.endDate|date('Y-m-d') }}</td>
+                <td>{{ training.price }}</td>
+                <td>{{ training.seats }}</td>
+                <td>{{ training.instructor.firstName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('training_show', { 'id': training.id }) }}">show</a>
+                        </li>
+                        {% if app.user.hasRole('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('training_edit', { 'id': training.id }) }}">edit</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('training_new') }}">Create a new training</a>
+        </li>
+    </ul>
+{% endblock %}

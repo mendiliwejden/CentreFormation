@@ -1,0 +1,39 @@
+training_index:
+    path:     /
+    defaults: { _controller: "FormationBundle:Training:index" }
+    methods:  GET
+
+training_show:
+    path:     /{id}/show
+    defaults: { _controller: "FormationBundle:Training:show" }
+    methods:  GET
+
+training_new:
+    path:     /new
+    defaults: { _controller: "FormationBundle:Training:new" }
+    methods:  [GET, POST]
+
+training_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FormationBundle:Training:edit" }
+    methods:  [GET, POST]
+
+training_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FormationBundle:Training:delete" }
+    methods:  DELETE
+
+training_buy:
+    path:   /{id}/buy
+    defaults: { _controller: "FormationBundle:Training:buy" }
+    methods: GET
+
+training_rate:
+    path:   /{id}/rate
+    defaults: { _controller: "FormationBundle:Training:rate" }
+    methods: POST
+
+training_payment:
+    path:   /{id}/payment
+    defaults: { _controller: "FormationBundle:Training:payment" }
+    methods: POST

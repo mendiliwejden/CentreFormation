@@ -1,0 +1,29 @@
+certificate_index:
+    path:     /
+    defaults: { _controller: "FormationBundle:Certificate:index" }
+    methods:  GET
+
+certificate_show:
+    path:     /{id}/show
+    defaults: { _controller: "FormationBundle:Certificate:show" }
+    methods:  GET
+
+certificate_new:
+    path:     /new
+    defaults: { _controller: "FormationBundle:Certificate:new" }
+    methods:  [GET, POST]
+
+certificate_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FormationBundle:Certificate:edit" }
+    methods:  [GET, POST]
+
+certificate_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FormationBundle:Certificate:delete" }
+    methods:  DELETE
+
+certificate_buy:
+    path:   /{id}/buy
+    defaults: { _controller: "FormationBundle:Certificate:buy" }
+    methods: GET

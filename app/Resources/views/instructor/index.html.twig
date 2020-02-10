@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Instructors list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for instructor in instructors %}
+            <tr>
+                <td><a href="{{ path('instructor_show', { 'id': instructor.id }) }}">{{ instructor.id }}</a></td>
+                <td>{{ instructor.firstName }}</td>
+                <td>{{ instructor.lastName }}</td>
+                <td>{{ instructor.email }}</td>
+                <td>{{ instructor.salary }}</td>
+                <td>{{ instructor.phone }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('instructor_show', { 'id': instructor.id }) }}">show</a>
+                        </li>
+                        {% if app.user.hasRole('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('instructor_edit', { 'id': instructor.id }) }}">edit</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('instructor_new') }}">Create a new instructor</a>
+        </li>
+    </ul>
+{% endblock %}

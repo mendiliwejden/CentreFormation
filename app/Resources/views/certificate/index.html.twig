@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Certificates list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Price</th>
+                <th>Duration</th>
+                <th>Language</th>
+                <th>Domain</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for certificate in certificates %}
+            <tr>
+                <td><a href="{{ path('certificate_show', { 'id': certificate.id }) }}">{{ certificate.id }}</a></td>
+                <td>{{ certificate.name }}</td>
+                <td>{{ certificate.code }}</td>
+                <td>{{ certificate.price }}</td>
+                <td>{{ certificate.duration }}</td>
+                <td>{{ certificate.language }}</td>
+                <td>{{ certificate.domain }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('certificate_show', { 'id': certificate.id }) }}">show</a>
+                        </li>
+                        {% if app.user.hasRole('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('certificate_edit', { 'id': certificate.id }) }}">edit</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('certificate_new') }}">Create a new certificate</a>
+        </li>
+    </ul>
+{% endblock %}

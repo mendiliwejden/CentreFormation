@@ -1,0 +1,7 @@
+services:
+#    formation.example:
+#        class: FormationBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+  formation.stripe:
+    class: FormationBundle\Services\StripeClient
+    arguments: ['%stripe_secret_key%', '%payment%', '@doctrine.orm.entity_manager', '@logger']
